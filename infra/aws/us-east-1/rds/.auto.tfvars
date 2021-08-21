@@ -1,0 +1,21 @@
+region = "us-east-1"
+identifier              = "johanyepes-mysql"
+engine                  = "aurora-mysql"
+engine_version          = "5.7.12"
+replica_count = 1
+replica_scale_max = 2
+replica_scale_min = 1
+instance_type           = "db.t3.medium"
+instance_type_replica   = "db.t3.medium"
+database_name           = "demo"
+username                = "johan"
+replica_scale_enabled = true
+deletion_protection     = false
+publicly_accessible     = true
+backup_retention_period = 1
+create_monitoring_role  = true
+snapshot_identifier     = null
+tags = {
+  Terraform = true
+  Owner = "johanyepes@hotmail.com"
+}
