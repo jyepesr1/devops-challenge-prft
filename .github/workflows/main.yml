@@ -60,7 +60,10 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Install helm3
-        run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+        run: |
+          wget https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz
+          tar xvf helm-v3.6.3-linux-amd64.tar.gz
+          sudo mv linux-amd64/helm /usr/local/bin
 
       - name: Helm Lint
         run: helm lint ./helm/demo-app
