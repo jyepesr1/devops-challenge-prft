@@ -59,13 +59,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Install helm3
+        run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
       - name: Helm Lint
-        uses: WyriHaximus/github-action-helm3@v2
-        with:
-          exec: helm lint ./helm/demo-app
+        run: helm lint ./helm/demo-app
 
       - name: Helm install
-        uses: WyriHaximus/github-action-helm3@v2
-        with:
-          exec: helm upgrade --install demo-app ./helm/demo-app
-          kubeconfig: '${{ secrets.KUBECONFIG }}'
+        run: |
+          echo ${{ secrets.KUBECONFIG }} > kubeconfig
+          
+          helm upgrade --install demo-app ./helm/demo-app --wait --atomic --namespace=default --kubeconfig kubeconfig
