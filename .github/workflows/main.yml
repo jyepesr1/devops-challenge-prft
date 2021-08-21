@@ -60,16 +60,12 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Install helm3
-        run: |
-          wget https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz
-          tar xvf helm-v3.6.3-linux-amd64.tar.gz
-          sudo mv linux-amd64/helm /usr/local/bin
+        run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
       - name: Helm Lint
         run: helm lint ./helm/demo-app
 
       - name: Helm install
         run: |
-          echo ${{ secrets.KUBECONFIG }} > kubeconfig
-          
+          echo "${{ secrets.KUBECONFIG }}" > kubeconfig
           helm upgrade --install demo-app ./helm/demo-app --wait --atomic --namespace=default --kubeconfig kubeconfig
