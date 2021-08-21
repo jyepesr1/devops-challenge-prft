@@ -54,7 +54,7 @@ ingress:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:241507129644:certificate/7fdbe587-ec00-47f6-bdb4-0f9dacea34db
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
   hosts:
-    - host: johanyepes.devopschallenge.link
+    - host: johanyepes2.devopschallenge.link
       paths:
         - path: /*
           pathType: ImplementationSpecific
