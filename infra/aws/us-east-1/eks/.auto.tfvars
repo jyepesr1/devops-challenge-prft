@@ -40,7 +40,7 @@ irsa_mapping = {
         "Action" : [
           "secretsmanager:GetSecretValue"
         ],
-        "Resource" : ["arn:aws:secretsmanager:us-east-1:241507129644:secret:johanyepes-demo-app"]
+        "Resource" : ["arn:aws:secretsmanager:us-east-1:241507129644:secret:*"]
       }
     ]
   }

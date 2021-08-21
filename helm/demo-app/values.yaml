@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: 241507129644.dkr.ecr.us-east-1.amazonaws.com/demo-app
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -19,7 +19,7 @@ serviceAccount:
   create: true
   # Annotations to add to the service account
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::241507129644:role/demo-app-role
+    eks.amazonaws.com/role-arn: arn:aws:iam::241507129644:role/production-demo-app-role-us-east-1
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: "demo-app"
@@ -49,14 +49,16 @@ ingress:
     alb.ingress.kubernetes.io/load-balancer-name: johanyepes-app
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/ip-address-type: ipv4
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:241507129644:certificate/02abc549-313d-45ce-9651-d83e9c9fca1c
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
   hosts:
-    - host: johanyepes.devopschallenge.link 
+    - host: johanyepes.devopschallenge.link
       paths:
         - path: /*
           pathType: ImplementationSpecific
-  tls: []
+  tls:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
