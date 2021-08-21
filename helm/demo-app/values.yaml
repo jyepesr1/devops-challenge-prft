@@ -51,10 +51,10 @@ ingress:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/ip-address-type: ipv4
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:241507129644:certificate/7fdbe587-ec00-47f6-bdb4-0f9dacea34db
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:241507129644:certificate/02abc549-313d-45ce-9651-d83e9c9fca1c
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
   hosts:
-    - host: johanyepes2.devopschallenge.link
+    - host: johanyepes.devopschallenge.link
       paths:
         - path: /*
           pathType: ImplementationSpecific
